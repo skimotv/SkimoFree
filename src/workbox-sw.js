@@ -23,5 +23,3 @@ workbox.routing.registerRoute(
     cacheName: 'html-cache',
   })
 );
-
-workbox.googleAnalytics.initialize();

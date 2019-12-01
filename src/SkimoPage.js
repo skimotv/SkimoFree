@@ -1,15 +1,11 @@
 'use strict';
 
 import $ from 'jquery';
-//import MaterialUtils from './Utils';
 import {Utils} from './Utils';
 export default class SkimoPage {
 
   constructor() {}
 
-  /**
-   * Loads the skimo's JSON-data and inserts one card per entry (only once).
-   */
   async loadSkimos(skimoId) {
 
     this.skimoId = skimoId;
@@ -26,9 +22,6 @@ export default class SkimoPage {
   }
 
 
-  /**
-   * Returns an Card element.
-   */
   createCard(result) {
     if (!result || result.isOk == false) {
       console.log("Request error", result);
@@ -36,7 +29,6 @@ export default class SkimoPage {
     } else {
       try {
         let skimoContent = $('#skimo-content');
-        //let data = JSON.parse(result);
         let data = result;
         $('#add2').prop('disabled', true);
         $('#skimo-title').text(Utils.escapeHtml(data.title));

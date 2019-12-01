@@ -15,8 +15,6 @@ export default class PrivacySettings {
     this.allowDataProcessing = $('#allow-data');
     this.allowContent = $('#allow-content');
     this.allowSocial = $('#allow-social');
-    this.uploadButton = $('button#add');
-    this.mobileUploadButton = $('button#add-floating');
 
     this.privacyDialogButton.click(() => this.showPrivacyDialog());
     this.privacyDialogSave.click(() => this.savePrivacySettings());
@@ -51,8 +49,6 @@ export default class PrivacySettings {
         }
         if (this.savedPrivacySettings.content) {
           this.allowContent.prop('checked', true);
-          this.uploadButton.removeAttr('disabled');
-          this.mobileUploadButton.removeAttr('disabled');
         }
         if (this.savedPrivacySettings.social) {
           this.allowSocial.prop('checked', true);
@@ -75,16 +71,6 @@ export default class PrivacySettings {
     }
     this.privacyDialog.get(0).close();
     Router.reloadPage();
-    this.setUploadButtonState(this.allowContent.prop('checked'));
   }
 
-  setUploadButtonState(enabled) {
-    if (enabled) {
-      this.uploadButton.removeAttr('disabled');
-      this.mobileUploadButton.removeAttr('disabled');
-    } else {
-      this.uploadButton.prop('disabled', true);
-      this.mobileUploadButton.prop('disabled', true);
-    }
-  }
 }
