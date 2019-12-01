@@ -26,7 +26,6 @@ export default class Router {
 
   async displayPage(pageId, onlyAuthed) {
     if (onlyAuthed) {
-      // If the page can only be displayed if the user is authenticated then we wait or the auth state.
       await this.auth.waitForAuth;
       if (!firebase.auth().currentUser) {
         return page('/');
