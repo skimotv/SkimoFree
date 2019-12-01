@@ -39,17 +39,8 @@ export default class Router {
         $(element).hide();
       }
     });
-
-    MaterialUtils.closeDrawer();
-
-    Router.scrollToTop();
   }
 
-  redirectHomeIfSignedIn() {
-    if (firebase.auth().currentUser) {
-      page('/home');
-    }
-  }
 
   static reloadPage() {
     let path = window.location.pathname;
