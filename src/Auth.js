@@ -19,9 +19,6 @@ export default class Auth {
     const signedInUserContainer = $('.fp-signed-in-user-container');
 
     this.configureFirebaseUi();
-    this.updateAll.click(() => this.updateAllAccounts());
-
-    this.auth.onAuthStateChanged((user) => this.onAuthStateChanged(user));
   }
 
   configureFirebaseUi() {
