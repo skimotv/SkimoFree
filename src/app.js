@@ -3,7 +3,6 @@
 import $ from 'jquery';
 import firebase from 'firebase/app';
 import firebaseConfig from './firebase-config.json';
-import Auth from './Auth';
 import Router from './Router';
 import 'material-design-lite';
 import {Utils} from './Utils';
@@ -19,8 +18,5 @@ firebase.initializeApp(firebaseConfig.result);
 window.firebase = firebase;
 
 $(document).ready(() => {
-  const auth = new Auth();
-  window.fpRouter = new Router(auth);
+  window.fpRouter = new Router();
 });
-
-Utils.startOfflineListener();

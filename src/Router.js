@@ -7,9 +7,7 @@ import {MaterialUtils} from './Utils';
 import page from 'page';
 
 export default class Router {
-  constructor(auth) {
-    this.auth = auth;
-
+  constructor() {
     this.pagesElements = $('[id^=page-]');
 
     const loadComponents = import(/* webpackPrefetch: true */ './async-loaded-components');

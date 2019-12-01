@@ -38,9 +38,6 @@ export class MaterialUtils {
 };
 
 export class Utils {
-  static startOfflineListener() {
-    console.log('Starting Offline status tracker!');
-  }
   /**
    * Escapes HTML characters from String.
    */
