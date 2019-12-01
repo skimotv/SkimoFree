@@ -1,8 +1,6 @@
 'use strict';
 
 import $ from 'jquery';
-import firebase from 'firebase/app';
-import 'firebase/auth';
 import {MaterialUtils} from './Utils';
 import page from 'page';
 
@@ -14,8 +12,6 @@ export default class Router {
 
     const showSkimo = async (skimoId) => (await loadComponents).skimoPage.loadSkimos(skimoId);
 
-    page(Router.setLinkAsActive);
-
     page('/skimo/:skimoId', (context) => {showSkimo(context.params.skimoId); this.displayPage('skimo');});
     page('*', () => page('/'));
 
@@ -23,13 +19,6 @@ export default class Router {
   }
 
   async displayPage(pageId, onlyAuthed) {
-    if (onlyAuthed) {
-      await this.auth.waitForAuth;
-      if (!firebase.auth().currentUser) {
-        return page('/');
-      }
-    }
-
     this.pagesElements.each((index, element) => {
       if (element.id === 'page-' + pageId) {
         $(element).show();
@@ -41,26 +30,4 @@ export default class Router {
     });
   }
 
-
-  static reloadPage() {
-    let path = window.location.pathname;
-    if (path === '') {
-      path = '/';
-    }
-    page(path);
-  }
-
-  static scrollToTop() {
-    $('html,body').animate({scrollTop: 0}, 0);
-  }
-
-  static setLinkAsActive(context, next) {
-    const canonicalPath = context.canonicalPath;
-    if (canonicalPath === '') {
-      canonicalPath = '/';
-    }
-    $('.is-active').removeClass('is-active');
-    $(`[href="${canonicalPath}"]`).addClass('is-active');
-    next();
-  }
 };
