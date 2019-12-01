@@ -21,43 +21,6 @@ export class MaterialUtils {
     }
   }
 
-  static clearTextField(element) {
-    element.value = '';
-    element.parentElement.MaterialTextfield.boundUpdateClassesHandler();
-  }
-
-  static upgradeTextFields(element) {
-    componentHandler.upgradeElements($('.mdl-textfield', element).get());
-  }
-
-  static upgradeDropdowns(element) {
-    if (element) {
-      componentHandler.upgradeElements($('.mdl-js-button', element).get());
-      componentHandler.upgradeElements($('.mdl-js-menu', element).get());
-    } else {
-      componentHandler.upgradeDom();
-    }
-  }
-
-  static onEndScroll(offset = 0) {
-    const resolver = new $.Deferred();
-    const mdlLayoutElement = $('.mdl-layout');
-    mdlLayoutElement.scroll(() => {
-      if ((window.innerHeight + mdlLayoutElement.scrollTop() + offset) >=
-          mdlLayoutElement.prop('scrollHeight')) {
-        console.log('Scroll End Reached!');
-        mdlLayoutElement.unbind('scroll');
-        resolver.resolve();
-      }
-    });
-    console.log('Now watching for Scroll End.');
-    return resolver.promise();
-  }
-
-  static stopOnEndScrolls() {
-    const mdlLayoutElement = $('.mdl-layout');
-    mdlLayoutElement.unbind('scroll');
-  }
 
   static showSnackbar(element, data) {
     if (!element.MaterialSnackbar) {
@@ -108,14 +71,4 @@ export class Utils {
         .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
   }
 
-  // Returns an array of all the hashtags in the given string.
-  static getHashtags(text) {
-    const hashtags = [];
-    text.replace(/#/g, ' #').split(/[^a-z0-9#_-]+/i).forEach((word) => {
-      if (word.startsWith('#')) {
-        hashtags.push(word.substring(1).toLowerCase());
-      }
-    });
-    return hashtags;
-  }
 }
