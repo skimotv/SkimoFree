@@ -1,18 +1,3 @@
-/**
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 'use strict';
 
 import $ from 'jquery';
@@ -22,18 +7,10 @@ import 'firebase/messaging';
 import {MaterialUtils} from './Utils';
 import page from 'page';
 
-/**
- * Handles notifications.
- */
 export default class Messaging {
-  /**
-   * Inititializes the notifications utility.
-   * @constructor
-   */
   constructor(firebaseHelper) {
     this.firebaseHelper = firebaseHelper;
 
-    // Firebase SDK
     this.auth = firebase.auth();
     try {
       this.messaging = firebase.messaging();
@@ -45,14 +22,12 @@ export default class Messaging {
       }
     }
 
-    // DOM Elements
     this.enableNotificationsContainer = $('.fp-notifications');
     this.enableNotificationsCheckbox = $('#notifications');
     this.enableNotificationsLabel = $('.mdl-switch__label', this.enableNotificationsContainer);
 
     this.toast = $('.mdl-js-snackbar');
 
-    // Event bindings
     this.enableNotificationsCheckbox.change(() => this.onEnableNotificationsChange());
     this.auth.onAuthStateChanged(() => this.trackNotificationsEnabledStatus());
     if (this.messaging) {
@@ -61,9 +36,6 @@ export default class Messaging {
     }
   }
 
-  /**
-   * Saves the token to the database if available. If not request permissions.
-   */
   async saveToken() {
     try {
       const currentToken = await this.messaging.getToken();
@@ -78,13 +50,8 @@ export default class Messaging {
     }
   }
 
-  /**
-   * Requests permission to send notifications on this browser.
-   */
   async requestPermission() {
     console.log('Requesting permission...');
-    // TODO: Blackout the entire screen and show a message saying why we need the permissions.
-    //       e.g. "If you would like to receive notifications on this device, grant permission above."
     try {
       await this.messaging.requestPermission();
       console.log('Notification permission granted.');
@@ -94,13 +61,9 @@ export default class Messaging {
     }
   }
 
-  /**
-   * Called when the app is in focus.
-   */
   onMessage(payload) {
     console.log('Notifications received.', payload);
 
-    // If we get a notification while focus on the app
     if (payload.notification) {
       const userId = payload.notification.click_action.split('/user/')[1];
 
@@ -114,9 +77,6 @@ export default class Messaging {
     }
   }
 
-  /**
-   * Triggered when the user changes the "Notifications Enabled" checkbox.
-   */
   onEnableNotificationsChange() {
     const checked = this.enableNotificationsCheckbox.prop('checked');
     this.enableNotificationsCheckbox.prop('disabled', true);
@@ -124,9 +84,6 @@ export default class Messaging {
     return this.firebaseHelper.toggleNotificationEnabled(checked);
   }
 
-  /**
-   * Starts tracking the "Notifications Enabled" checkbox status.
-   */
   trackNotificationsEnabledStatus() {
     if (this.auth.currentUser) {
       this.firebaseHelper.registerToNotificationEnabledStatusUpdate((data) => {
