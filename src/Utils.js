@@ -40,25 +40,6 @@ export class MaterialUtils {
 export class Utils {
   static startOfflineListener() {
     console.log('Starting Offline status tracker!');
-
-    const updateOnlineStatus = () => {
-      if (!navigator.onLine) {
-        console.log('User is now Offline!');
-        const data = {
-          message: '⚡ You are offline',
-          timeout: 100000000,
-        };
-        MaterialUtils.showSnackbar($('.mdl-js-snackbar'), data);
-        $('.fp-disabled-when-offline').attr('disabled', 'disabled');
-      } else{
-        console.log('User is now Online!');
-        MaterialUtils.hideSnackbar($('.mdl-js-snackbar'));
-        $('.fp-disabled-when-offline').removeAttr('disabled');
-      }
-    };
-
-    window.addEventListener('online',  updateOnlineStatus);
-    window.addEventListener('offline', updateOnlineStatus);
   }
   /**
    * Escapes HTML characters from String.

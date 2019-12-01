@@ -32,9 +32,5 @@ export default class FirebaseHelper {
     this.firebaseRefs = [];
   }
 
-  cancelAllSubscriptions() {
-    this.firebaseRefs.forEach((ref) => ref.off());
-    this.firebaseRefs = [];
-  }
 
 };
