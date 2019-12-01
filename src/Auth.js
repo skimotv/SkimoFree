@@ -17,38 +17,7 @@ export default class Auth {
     this.auth = firebase.auth();
     this._waitForAuthPromiseResolver = new $.Deferred();
     const signedInUserContainer = $('.fp-signed-in-user-container');
-
-    this.configureFirebaseUi();
   }
 
-  configureFirebaseUi() {
-    let signInFlow = 'popup';
-    if (('standalone' in window.navigator)
-        && window.navigator.standalone) {
-      signInFlow = 'redirect';
-    }
-
-    this.uiConfig = {
-      'signInFlow': signInFlow,
-      'signInOptions': [
-        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      ],
-      'callbacks': {
-        'uiShown': function() {
-          const intervalId = setInterval(() => {
-            const IDPButtons = $('.firebaseui-idp-button');
-            const nbIDPButtonDisplayed = IDPButtons.length;
-            if (nbIDPButtonDisplayed > 0) {
-              clearInterval(intervalId);
-              if (!$('#fp-pre-consent').is(':checked')) {
-                IDPButtons.attr('disabled', 'disabled');
-              }
-            }
-          }, 1);
-        },
-      },
-    };
-    this.firebaseUi = new firebaseui.auth.AuthUI(firebase.auth());
-  }
 
 };

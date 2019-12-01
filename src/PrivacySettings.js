@@ -6,8 +6,7 @@ import 'firebase/auth';
 import Router from './Router';
 
 export default class PrivacySettings {
-  constructor(firebaseHelper) {
-    this.firebaseHelper = firebaseHelper;
+  constructor() {
 
     this.privacyDialogButton = $('.privacy-dialog-link');
     this.privacyDialog = $('#privacy-dialog');
@@ -37,7 +36,7 @@ export default class PrivacySettings {
     }
   }
 
-  async initializePrivacySettings() {
+/*  async initializePrivacySettings() {
     const uid = firebase.auth().currentUser.uid;
     if (this.savedPrivacySettings === undefined) {
       const snapshot = await this.firebaseHelper.getPrivacySettings(uid);
@@ -55,9 +54,9 @@ export default class PrivacySettings {
         }
       }
     }
-  }
+  }*/
 
-  savePrivacySettings() {
+/*  savePrivacySettings() {
     const uid = firebase.auth().currentUser.uid;
     const settings = {
       data_processing: this.allowDataProcessing.prop('checked'),
@@ -71,6 +70,6 @@ export default class PrivacySettings {
     }
     this.privacyDialog.get(0).close();
     Router.reloadPage();
-  }
+  }*/
 
 }
