@@ -7,14 +7,10 @@ import page from 'page';
 export default class Router {
   constructor() {
     this.pagesElements = $('[id^=page-]');
-
     const loadComponents = import(/* webpackPrefetch: true */ './async-loaded-components');
-
     const showSkimo = async (skimoId) => (await loadComponents).skimoPage.loadSkimos(skimoId);
-
     page('/skimo/:skimoId', (context) => {showSkimo(context.params.skimoId); this.displayPage('skimo');});
     page('*', () => page('/'));
-
     page();
   }
 

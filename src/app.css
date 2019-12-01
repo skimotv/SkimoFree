@@ -832,15 +832,6 @@ color: hsla(0,0%,100%,.8)
   max-width: 620px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
 }
-.firebaseui-idp-google.mdl-button--raised[disabled][disabled] {
-  background-color: #ddd;
-  opacity: 0.8;
-}
-.firebaseui-idp-facebook.mdl-button--raised[disabled][disabled] {
-  background-color: #a5a5e0;
-  filter: brightness(0.5);
-  opacity: 0.8;
-}
 .fp-note .mdl-checkbox {
   height: auto;
 }
@@ -940,67 +931,10 @@ color: hsla(0,0%,100%,.8)
   margin-left: -1px;
 }
 
-/* Firebase UI styling */
-
-#firebaseui-auth-container {
-  min-width: 251px;
-}
-.firebaseui-container {
-  background: rgba(0,0,0,0.05);
-  margin-bottom: 15px;
-  min-height: 150px;
-  padding-top: 10px;
-  border-radius: 20px;
-  box-shadow: none;
-}
-.firebaseui-container.firebaseui-page-provider-sign-in {
-  background: transparent;
-  box-shadow: none;
-  min-height: 0;
-  margin-bottom: 0;
-  padding-top: 0;
-}
-.firebaseui-container.firebaseui-id-page-callback {
-  background: transparent;
-  box-shadow: none;
-  margin-top: 40px;
-  height: 84px;
-  min-height: 0;
-  margin-bottom: 0;
-  padding-top: 0;
-}
-.firebaseui-card-header {
-  display: none;
-}
-.firebaseui-subtitle, .firebaseui-text {
-  color: rgba(255,255,255,0.87);
-}
-.firebaseui-form-actions .mdl-button--raised.mdl-button--colored.firebaseui-button {
-  background: rgba(0,0,0,0.1);
-}
-.firebaseui-id-dismiss-info-bar {
-  display: block;
-}
-.firebaseui-info-bar {
-  border: 0;
-  border-radius: 10px;
-  left: 5%;
-  right: 5%;
-  top: 10%;
-  bottom: 10%;
-}
 .fp-view-posts-button {
   margin-bottom: 20px;
 }
 
-/* Firebase UI MDL fixes */
-
-.mdl-layout__tab {
-  height: 48px;
-  line-height: 48px;
-  padding: 0 24px;
-  color: rgba(255,255,255,.6);
-}
 
 .mdl-dialog {
   width: 90%;
@@ -1016,10 +950,4 @@ dialog + .backdrop { /* polyfill */
 
 .fp-non-eu, .fp-eu {
   display: none !important;
-}
-
-/* Hashtag Search page */
-
-.fp-hashtag {
-  font-size: 30px;
 }

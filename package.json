@@ -1,10 +1,9 @@
 {
   "scripts": {
     "clean": "rm -rf public/js public/css public/fonts public/workbox public/workbox-sw.js public/index.html src/firebase-config.json public/firebase-messaging-sw.js public/firebase-messaging-sw.js.map",
-    "build": "npm run clean && npm run createfirebaseconf && npm install && echo 'Done. Ready to deploy.'",
-    "serve-wds": "npm run clean && npm run createfirebaseconf",
-    "serve": "npm run clean && npm run createfirebaseconf && concurrently \"firebase serve --only hosting\" \"webpack -d --watch\" \"webpack-dev-server --host 0.0.0.0 --port 80\"",
-    "createfirebaseconf": "firebase setup:web --json > ./src/firebase-config.json"
+    "build": "npm run clean && npm install && echo 'Done. Ready to deploy.'",
+    "serve-wds": "npm run clean",
+    "serve": "npm run clean && concurrently \"firebase serve --only hosting\" \"webpack -d --watch\" \"webpack-dev-server --host 0.0.0.0 --port 80\""
   },
   "devDependencies": {
     "ajv": "^6.10.2",
@@ -19,7 +18,6 @@
     "cssnano": "^4.0.0-rc.2",
     "eslint": "^4.19.1",
     "eslint-config-google": "^0.9.1",
-    "firebase-tools": "^7.2.2",
     "glob-all": "^3.1.0",
     "html-critical-webpack-plugin": "^2.1.0",
     "html-loader": "^0.5.5",
@@ -41,8 +39,6 @@
   "dependencies": {
     "dialog-polyfill": "^0.4.9",
     "file-loader": "^1.1.11",
-    "firebase": "^6.3.4",
-    "firebaseui": "^4.1.0",
     "jquery": "^3.3.1",
     "latinize": "^0.4.0",
     "material-design-icons": "^3.0.1",
