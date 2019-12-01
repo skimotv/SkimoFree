@@ -159,11 +159,6 @@ module.exports = (env, argv) => {
           blockJSRequests: false,
         },
       }),
-      new InjectManifest({
-        swSrc: 'src/workbox-sw.js',
-        importWorkboxFrom: 'local',
-        importsDirectory: 'workbox',
-      }),
     ],
   };
 };

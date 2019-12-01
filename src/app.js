@@ -18,17 +18,9 @@ import './app.css';
 firebase.initializeApp(firebaseConfig.result);
 window.firebase = firebase;
 
-
 $(document).ready(() => {
   const auth = new Auth();
-  // Starts the router.
   window.fpRouter = new Router(auth);
 });
-
-if ('serviceWorker' in navigator) {
-  $(window).on('load', () => {
-    window.navigator.serviceWorker.register('/workbox-sw.js');
-  });
-}
 
 Utils.startOfflineListener();

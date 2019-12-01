@@ -14,6 +14,4 @@ export default class FirebaseHelper {
     this.auth = firebase.auth();
     this.firebaseRefs = [];
   }
-
-
 };
