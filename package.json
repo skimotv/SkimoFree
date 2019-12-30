@@ -1,9 +1,9 @@
 {
   "scripts": {
-    "clean": "rm -rf public/js public/css public/fonts public/workbox public/workbox-sw.js public/index.html src/firebase-config.json public/firebase-messaging-sw.js public/firebase-messaging-sw.js.map",
+    "clean": "rm -rf public/js public/css public/fonts public/workbox public/workbox-sw.js public/index.html",
     "build": "npm run clean && npm install && echo 'Done. Ready to deploy.'",
     "serve-wds": "npm run clean",
-    "serve": "npm run clean && concurrently \"firebase serve --only hosting\" \"webpack -d --watch\" \"webpack-dev-server --host 0.0.0.0 --port 80\""
+    "serve": "npm run && concurrently  \"webpack -d --watch\" \"webpack-dev-server --host 0.0.0.0 --port 80\""
   },
   "devDependencies": {
     "ajv": "^6.10.2",

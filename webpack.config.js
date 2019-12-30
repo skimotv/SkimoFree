@@ -31,7 +31,6 @@ module.exports = (env, argv) => {
   return {
     entry: {
       app: './src/app.js',
-      sw: './src/firebase-messaging-sw.js',
     },
     output: {
       path: path.resolve(__dirname, 'public'),
@@ -40,8 +39,6 @@ module.exports = (env, argv) => {
       filename: (entrypoint) => {
         if (entrypoint.chunk.name === 'app') {
           return 'js/bundle.[hash].js';
-        } else if (entrypoint.chunk.name === 'sw') {
-          return 'firebase-messaging-sw.js';
         }
       },
     },
@@ -95,15 +92,6 @@ module.exports = (env, argv) => {
           },
         },
         {
-          test: /firebaseui\.css$/,
-          loader: 'string-replace-loader',
-          include: path.resolve('node_modules/firebaseui/dist/'),
-          query: {
-            search: '@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700);',
-            replace: '',
-          },
-        },
-        {
           test: /material\-icons\.css$/,
           loader: 'string-replace-loader',
           include: path.resolve('node_modules/material-design-icons/iconfont/'),
@@ -131,7 +119,6 @@ module.exports = (env, argv) => {
           // Give paths to all assets that generate DOM content.
           paths: glob.sync([
             path.join(__dirname, 'src/*.js'),
-            path.join(__dirname, 'node_modules/firebaseui/dist/firebaseui.js'),
             path.join(__dirname, 'node_modules/material-design-lite/material.js'),
             path.join(__dirname, 'src/index.html'),
           ]),

@@ -59,11 +59,6 @@ export default class SkimoPage {
               <p>
                 "${skimo.text}"
               </p>
-              <small>
-                <div style="margin-bottom: -25px;">
-                    <i class="material-icons">favorite</i><span class="likes">0</span>
-                </div>
-              </small>
             </blockquote>
           </div>
           <div class="card-action">
