@@ -10,7 +10,7 @@ export default class SkimoPage {
 
     this.skimoId = skimoId;
     $.ajax({
-      url: 'http://localhost:2345/skimo/' + skimoId,
+      url: 'http://api.skimo.tv:2345/skimo/' + skimoId,
       context: this,
       error: function(result) {
         console.log("Server error", result);
